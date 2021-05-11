@@ -32,7 +32,7 @@ class ThemeContextProvider extends React.Component{
 export default ThemeContextProvider;
 */
 
-
+/*
 import React from 'react';
 import { createContext } from 'react'
 
@@ -61,5 +61,76 @@ return(
 )
 }
 }
+
+export default ThemeContextProvider;*/
+/*
+
+import React from 'react';
+import { createContext } from 'react';
+
+export const ThemeProvider = createContext();
+
+class ThemeContextProvider extends React.Component{
+
+state={
+    isDarkTheme:true,
+    darkTheme:{
+        background:'red',
+        text:'while'
+    }, 
+    lightTheme:{
+          background:'gray',
+          text:'black'
+    }
+}
+
+    render()
+    {  
+         return(
+       <div>
+           <ThemeProvider.Provider value = {{ ...this.state }}>
+               {this.props.children}
+               </ThemeProvider.Provider>
+           </div>  
+)
+}
+}
+
+export default ThemeContextProvider;
+*/
+
+import React from 'react';
+import { createContext } from 'react';
+
+export const ThemeProvider = createContext();
+
+class ThemeContextProvider extends React.Component{
+
+    state = {
+        isDarkTheme:true,
+         darkTheme:{
+             background:'blue',
+             textColor:'white'
+         } , 
+
+         lightTheme:{
+             background:'orange',
+             textColor:'black'
+        }
+    }
+
+changeTheme = ()=>{
+
+return this.setState({isDarkTheme : !this.state.isDarkTheme});
+
+}   
+render(){
+    return( 
+ <ThemeProvider.Provider value={{ ...this.state , changeBackground :this.changeTheme } }>
+     { this.props.children }
+     </ThemeProvider.Provider>
+ )//end of the return
+}//end of the render
+}//end of the class component
 
 export default ThemeContextProvider;

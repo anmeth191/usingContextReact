@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import  { ThemeProvider }  from '../contexts/ThemeContext';
 
 class NavBar extends React.Component{
@@ -22,5 +22,25 @@ return(
 
 }
 }
+
+export default NavBar;
+*/
+
+import React from 'react';
+import { ThemeProvider } from '../contexts/ThemeContext';
+
+
+
+class NavBar extends React.Component{
+    static contextType = ThemeProvider;
+render(){
+    const { isDarkTheme , darkTheme , lightTheme , changeBackground} = this.context;
+    const theme = isDarkTheme ? darkTheme : lightTheme;
+    
+return(
+    <div style={{ backgroundColor: theme.background , color:theme.textColor }}><li> <h1>Hello from navbar</h1></li></div>
+)
+}
+}//end of the class Component
 
 export default NavBar;
