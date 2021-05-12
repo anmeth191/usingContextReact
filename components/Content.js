@@ -4,17 +4,14 @@ import { ThemeProvider } from '../contexts/ThemeContext';
 
 class Content extends React.Component{
 
-static contextType = ThemeProvider;
+  static contextType = ThemeProvider;
 
-render(){
-
-  const { isDarkTheme , darkTheme , lightTheme , changeBackground } = this.context;
-  console.log(changeBackground)
-  
-  const theme = isDarkTheme ? darkTheme : lightTheme;
+render(){  
+const { isDarkTheme , darkTheme , lightTheme , changeBackground } = this.context;
+const theme = isDarkTheme ? darkTheme : lightTheme; 
 
   return(
-    <div style={{backgroundColor:theme.background , color:theme.textColor}}>
+    <div style={{ backgroundColor: theme.background, color:theme.textColor }}>
          <ul>
         {this.props.tasks.map( element =>{
           return(
@@ -25,7 +22,7 @@ render(){
         }
         </ul>
 
-        <button onClick={changeBackground}>Change BackGround </button>
+        <button onClick={ changeBackground }>Change BackGround </button>
         
       </div>
   )

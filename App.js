@@ -1,7 +1,8 @@
 import React from 'react'
 import Navbar  from './components/Navbar';
 import Content from './components/Content';
-import ThemeContextProvider from './contexts/ThemeContext';
+import ThemeProviderContext from './contexts/ThemeContext';
+import LoggedContextProvider from './contexts/LoggedUser';
 
 
 class App extends React.Component{
@@ -9,11 +10,14 @@ class App extends React.Component{
 render(){
   
 return( <div>
- <ThemeContextProvider>
+  <LoggedContextProvider> {/*this are nested context it doesnt matter the order of the contexts as long they 
+  wrap the components 
+  you want*/}
+  <ThemeProviderContext>
   <Navbar />
   <Content />
-  </ThemeContextProvider>
- 
+  </ThemeProviderContext>
+  </LoggedContextProvider>
 </div>
 )//end of the main return of the div
 }//end of the render
