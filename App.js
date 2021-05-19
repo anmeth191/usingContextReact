@@ -1,26 +1,46 @@
-import React from 'react'
-import Navbar  from './components/Navbar';
-import Content from './components/Content';
-import ThemeProviderContext from './contexts/ThemeContext';
-import LoggedContextProvider from './contexts/LoggedUser';
+//import { useState } from 'react';
+import React , {useContext} from 'react';
+import AddTodo from './AddTodo';
+import todoContextCreated from './ContextTodo';
+
+//import ContextTodoProvider from './ContextTodo';
+
+const App = ()=>{
 
 
-class App extends React.Component{
+const context = useContext(todoContextCreated);
+console.log(context)  
+ /*const [todos , setTodos] = useState([
+    {
+      text:'pay Bills' , id:1
+    },{
+      text:'Do your Homework' , id:2
+    },{
+      text:'Feed the cat' , id:3
+    }
+  ])
+*/
   
-render(){
-  
-return( <div>
-  <LoggedContextProvider> {/*this are nested context it doesnt matter the order of the contexts as long they 
-  wrap the components 
-  you want*/}
-  <ThemeProviderContext>
-  <Navbar />
-  <Content />
-  </ThemeProviderContext>
-  </LoggedContextProvider>
-</div>
-)//end of the main return of the div
-}//end of the render
-}//end of the class App 
+const addTask = (textProp)=>{
+
+  //setTodos([...todos , {text:textProp , id:4}])
+}
+
+
+return(
+  <div>
+     <ul>
+       {
+       /*  todos.map( element =>{
+           return(
+             <li key={element.id}>{element.text}</li>
+           )
+         })*/
+       }
+    </ul>  
+   <AddTodo addTask={ addTask } />
+    </div>
+)
+}
 
 export default App;
