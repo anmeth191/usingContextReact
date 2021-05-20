@@ -1,24 +1,17 @@
-import React , { useState , createContext } from 'react';
+import React , { useState,  createContext } from 'react';
 
-export const todoContextCreated = createContext();
+export const todoContext = createContext(); 
 
-const ContextTodoProvider = ({ children })=>{
+const TodoContextProvider = (props) => {
 
-  const [ todos, setState ] = useState([
-    {text:'pay Bills' , id:1 }
-    ,{text:'Do your Homework',id:2}
-    ,{text:'Feed the cat' , id:3}
-  ]);
+const [texto , setText] = useState([{text:'Learn React' , id:1}, {text:'Learn NodeJs' , id: 2 } , {text:'Learn MongoDb', id:3 }])
 
-  
+return(
+<todoContext.Provider value={{ texto }}>
+  {props.children}
+  </todoContext.Provider>
 
-  return(
-    
-      <todoContextCreated.Provider value={{ todos }}>
-          { children }
-          </todoContextCreated.Provider>
-  )
-
+)
 }
 
-export default ContextTodoProvider;
+export default TodoContextProvider;
